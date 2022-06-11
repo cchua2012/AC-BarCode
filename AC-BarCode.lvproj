@@ -142,6 +142,7 @@
 		<Item Name="PrinterBarCode.vi" Type="VI" URL="../Programer/PrinterBarCode.vi"/>
 		<Item Name="ClearCOM.vi" Type="VI" URL="../Programer/ClearCOM.vi"/>
 		<Item Name="WebAPI_Excel.vi" Type="VI" URL="../Programer/WebAPI_Excel.vi"/>
+		<Item Name="gittest.vi" Type="VI" URL="../Programer/gittest.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Simple Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Simple Error Handler.vi"/>
