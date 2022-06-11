@@ -1,0 +1,3 @@
+1.追加列印條碼數量
+2.追加從系統資料庫下載到此路徑機種檔案C:\AC-BarCode\Setting Data\Model2.csv
+  如需使用只要更改,Inspection.ini的設定檔案.使用前請先確認Model2.csv的內容是否正確.

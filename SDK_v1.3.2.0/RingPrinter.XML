@@ -1,0 +1,821 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RingPrinter</name>
+    </assembly>
+    <members>
+        <member name="T:RegalPrinter.Ring">
+            <summary>
+            Ring Class
+            </summary>
+        </member>
+        <member name="T:RegalPrinter.Ring.JobStatus">
+            <summary>
+            JobStatus
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.StartPrinter(System.String)">
+            <summary>
+            開始列印
+            </summary>
+            <param name="printName">印表機路徑及名稱</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.StartPrinter(System.String,System.String)">
+            <summary>
+            開始列印
+            </summary>
+            <param name="printName">印表機路徑及名稱</param>
+            <param name="strDocName">列印檔案名稱</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.StartPrinterReturnHandle(System.String,System.String)">
+            <summary>
+            開始列印
+            </summary>
+            <param name="printName">印表機路徑及名稱</param>
+            <param name="strDocName">列印檔案名稱</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.EndPrinter">
+            <summary>
+            結束列印
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.CleanPrint">
+            <summary>
+            取消列印
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.FMT(System.Int32,System.String,System.String,System.Boolean,System.Byte,System.Byte)">
+            <summary>
+            設定標籤大小格式
+            </summary>
+            <param name="formatNo">1 to 2 (1 to 4 for BCC series)</param>
+            <param name="x">Specifies width (X direction) of printing area Setting by mm XXX.X 0.1 to Head width (mm) Setting by dot XXXXd 1 to Head width (dot)</param>
+            <param name="y">Specifies the length (Y direction) of printing area, Setting by mm XXX.X 0.1 to Max memory size (mm) Setting by dot XXXXd 1 to Max memory size (dot)</param>
+            <param name="Is180Rotation">Rotation of the Format 0:0 degree rotation (Standard),2 : 180 degree rotation</param>
+            <param name="IsReflected">Image reflection,0 : Usual printing ( Without reflection),1: Reflected image printing.</param>
+            <param name="copies">This is used to make copies across the width of the label setting,Setting : 1 to 5 ( Only 1 for SP/4012PL and MS series/ 4000PLM series)</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.SendTo(System.String)">
+            <summary>
+            送出命令給印表機
+            </summary>
+            <param name="Data">字串命令或資料</param>
+            <returns>return 0為失敗</returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.SendTo(System.Byte[])">
+            <summary>
+            送出命令給印表機
+            </summary>
+            <param name="Data">字串命令或資料</param>
+            <returns>return 0為失敗</returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.PRT(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            列印數量、是否切裁
+            </summary>
+            <param name="quantity">列印數量</param>
+            <param name="cutUnit">切刀數</param>
+            <param name="fixedNO">固定為1</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.PRT(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            列印
+            </summary>
+            <param name="quantity">數量</param>
+            <param name="cutUnit">切刀數</param>
+            <param name="fixedNO">固定為1</param>
+            <param name="copies">複製數量</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.Over8(System.Int32,System.Int32)">
+            <summary>
+            因為Ring Printer列印圖形需確保每行4 bytes
+            </summary>
+            <param name="x">bitmap width</param>
+            <param name="y">bitmap height</param>
+            <returns>計算後符合4 byte每行的bitmap width</returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.Paint(System.String,System.Drawing.Font)">
+            <summary>
+            自定字串產生圖形檔
+            </summary>
+            <param name="printText">自定字串</param>
+            <param name="fontStyle">字形大小及類型</param>
+            <returns>Bitmap</returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.Paint(System.String,System.Drawing.Font,System.Single,System.Single)">
+            <summary>
+            自定字串產生圖形檔
+            </summary>
+            <param name="printText">自定字串</param>
+            <param name="fontStyle">字形大小及類型</param>
+            <param name="scaleW">寬比例</param>
+            <param name="scaleH">高比例</param>
+            <returns>Bitmap</returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.Paint(System.String,System.Drawing.Font,System.Single,System.Single,System.Boolean)">
+            <summary>
+            自定字串產生圖形檔
+            </summary>
+            <param name="printText">自定字串</param>
+            <param name="fontStyle">字形大小及類型</param>
+            <param name="scaleW">寬比例</param>
+            <param name="scaleH">高比例</param>
+            <param name="drawVertical">是否垂直列印</param>
+            <returns>Bitmap</returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.Paint(System.String,System.Drawing.Font,System.Single,System.Single,System.Int32,System.Boolean)">
+            <summary>
+            自定字串產生圖形檔
+            </summary>
+            <param name="printText">自定字串</param>
+            <param name="fontStyle">字形大小及類型</param>
+            <param name="scaleW">寬比例</param>
+            <param name="scaleH">高比例</param>
+            <param name="spacing">字元間距</param>
+            <param name="drawVertical">是否垂直列印</param>
+            <returns>Bitmap</returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetBIM(System.String,System.String,System.Drawing.Font,System.String)">
+            <summary>
+            取得字串轉換的圖形
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fontStyle">字體形態及大小</param>
+            <param name="printText">自定字串</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetBIM(System.String,System.String,System.Drawing.Font,System.String,System.Int32,System.Single,System.Single,System.Boolean)">
+            <summary>
+            取得字串轉換的圖形
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fontStyle">字體形態及大小</param>
+            <param name="printText">自定字串</param>
+            <param name="dree">0:0度  90:90度  180:180度  270:270度</param>
+            <param name="scaleW">寬比例</param>
+            <param name="scaleH">高比例</param>
+            <param name="drawVertical">是否直印</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetBIM(System.String,System.String,System.Drawing.Font,System.String,System.Int32,System.Single,System.Single,System.Int32,System.Boolean)">
+            <summary>
+            取得字串轉換的圖形
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fontStyle">字體形態及大小</param>
+            <param name="printText">自定字串</param>
+            <param name="dree">0:0度  90:90度  180:180度  270:270度</param>
+            <param name="scaleW">寬比例</param>
+            <param name="scaleH">高比例</param>
+            <param name="drawVertical">是否直印</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetBIM(System.String,System.String,System.Drawing.Font,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            取得字串轉換的圖形
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fontStyle">字體形態及大小</param>
+            <param name="printText">自定字串</param>
+            <param name="dree">0:0度  90:90度  180:180度  270:270度</param>
+            <param name="scaleW">寬比例</param>
+            <param name="scaleH">高比例</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetBIM(System.String,System.String,System.Drawing.Font,System.String,System.Int32)">
+            <summary>
+            取得字串轉換的圖形
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fontStyle">字體形態及大小</param>
+            <param name="printText">自定字串</param>
+            <param name="dree">0:0度  90:90度  180:180度  270:270度</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetAIX(System.String,System.String,System.Drawing.Font,System.String,System.Int32,System.Single,System.Single)">
+            <summary>
+            取得字串轉換的圖形
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fontStyle">字體形態及大小</param>
+            <param name="printText">自定字串</param>
+            <param name="dree">0:0度  90:90度  180:180度  270:270度</param>
+            <param name="scaleW">寬比例</param>
+            <param name="scaleH">高比例</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetAIX(System.String,System.String,System.Drawing.Font,System.String,System.Int32)">
+            <summary>
+            取得字串轉換的圖形
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fontStyle">字體形態及大小</param>
+            <param name="printText">自定字串</param>
+            <param name="dree">0:0度  90:90度  180:180度  270:270度</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetAIX(System.String,System.String,System.String)">
+            <summary>
+            列印圖形檔
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fileName">檔案名稱(黑白圖)</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetAIX(System.String,System.String,System.Drawing.Image)">
+            <summary>
+            列印圖形檔
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fileName">檔案名稱(黑白圖)</param>
+            <param name="img">Image or Resource</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetAIX(System.String,System.String,System.Drawing.Font,System.String)">
+            <summary>
+            取得字串轉換的圖形
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fontStyle">字體形態及大小</param>
+            <param name="printText">自定字串</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetAIX(System.String,System.String,System.Drawing.Font,System.String,System.Int32,System.Single,System.Single,System.Boolean)">
+            <summary>
+            取得字串轉換的圖形
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fontStyle">字體形態及大小</param>
+            <param name="printText">自定字串</param>
+            <param name="dree">0:0度  90:90度  180:180度  270:270度</param>
+            <param name="scaleW">寬比例</param>
+            <param name="scaleH">高比例</param>
+            <param name="drawVertical">是否直印</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetBIM(System.String,System.String,System.String)">
+            <summary>
+            列印圖形檔
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fileName">檔案名稱(黑白圖)</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.GetBIM(System.String,System.String,System.Drawing.Image)">
+            <summary>
+            列印圖形檔
+            </summary>
+            <param name="xPosition">在FMT範圍中x軸位置</param>
+            <param name="yPosition">在FMT範圍中y軸位置</param>
+            <param name="fileName">檔案名稱(黑白圖)</param>
+            <param name="img">Image or Resource</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.SetIndexedPixel(System.Int32,System.Int32,System.Drawing.Imaging.BitmapData,System.Boolean)">
+            <summary>
+            設定1bpp圖像在各像點的像素資料
+            </summary>
+            <param name="x">bitmap width</param>
+            <param name="y">bitmap height</param>
+            <param name="bmd">bitmap data class</param>
+            <param name="pixel">set mask</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.Invert(System.Drawing.Bitmap)">
+            <summary>
+            圖形像素反相
+            </summary>
+            <param name="b">bitmap class</param>
+            <returns>if success return true</returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.fullASCII(System.Byte[])">
+            <summary>
+            支援8 bit ACSII code
+            </summary>
+            <param name="bytData">bitmap data</param>
+            <returns>ACII string</returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.SFM(System.String)">
+            <summary>
+            選擇使用那一個己註冊的FMT表
+            </summary>
+            <param name="formatNo">format number</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.TMG(System.String)">
+            <summary>
+            建立起始點上方的邊界
+            </summary>
+            <param name="lineMargin">上方邊界距離</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.LMG(System.String)">
+            <summary>
+            建立起始點左方的邊界
+            </summary>
+            <param name="leftMargin">左方邊界距離</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.CLS">
+            <summary>
+            清除印表機記憶體中包含所有的內存
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.ACL">
+            <summary>
+            清除印表機之前列印範圍內的所有內存
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.ACL(System.String)">
+            <summary>
+            清除印表機之前列印範圍內的所有內存 for BCC系列
+            </summary>
+            <param name="headNo">print head No</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.CPY">
+            <summary>
+            Using field setting that has been received, it generates the image into drawing memory
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.PCL(System.Int32)">
+            <summary>
+            Magnifies the whole image of printing area (Referring format) by
+            intended number. The intended number will be reflected on both
+            X and Y directions for the magnification.
+            ( The drawing memory is not used)
+            </summary>
+            <param name="magnification">放大倍數</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.COL(System.Int32)">
+            <summary>
+            反轉黑白部分
+            </summary>
+            <param name="mode">模式 0:Normal 1:Reverse</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.PIT(System.String)">
+            <summary>
+            指定字串中字元間距
+            </summary>
+            <param name="charSpace">字元間距</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.OFT(System.Int32,System.Int32)">
+            <summary>
+            指定字形寬高(Optional function : When Out line font is embedded)
+            </summary>
+            <param name="x_Size">寬(8~255)</param>
+            <param name="y_Size">高(8~255)</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.SDZ(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Specifies a decompression size and it’s style per one character used as reference of M-font.
+            </summary>
+            <param name="x_Size">M_Font windth</param>
+            <param name="y_Size">M_Font height</param>
+            <param name="angle">Specifies an angle from the vertical axis ( 0 / 10 / 15 / 20 )</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.CAG(System.Int32)">
+            <summary>
+            旋轉字串中字元角度
+            </summary>
+            <param name="rotationDegree">　0 : 0 degree rotation
+            　　　　　　　　1 : 90 degree rotation
+            　　　　　　　　2 : 180 degree rotation
+            　　　　　　　　3 : 270 degree rotation</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.FAG(System.Int32)">
+            <summary>
+            旋轉整個字串角度
+            </summary>
+            <param name="rotationDegree">　0 : 0 degree rotation
+            　　　　　　　　1 : 90 degree rotation
+            　　　　　　　　2 : 180 degree rotation
+            　　　　　　　　3 : 270 degree rotation</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.DMD(System.Int32)">
+            <summary>
+            指定欄位繪圖模式
+            </summary>
+            <param name="drawingMode">0:Replace,1:OR,2:AND,3:XOR</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.DPD(System.Int32)">
+            <summary>
+            指定bit image欄位繪圖模式
+            </summary>
+            <param name="drawingMode">0:Replace,1:OR,2:AND,3:XOR</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.BDN(System.Int32)">
+            <summary>
+            指定Barcode密度(Narrow)
+            </summary>
+            <param name="narrowRate">Narrow 1~64</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.BDN(System.Int32,System.Int32)">
+            <summary>
+            指定Barcode密度(Narrow/Wide)
+            </summary>
+            <param name="narrowRate">Narrow 1~64</param>
+            <param name="wideRate">Wide 1~64</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.CFL(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            設定文字欄位
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="fontNumber">字體代碼</param>
+            <param name="magnificationX">X軸放大倍數</param>
+            <param name="magnificationY">Y軸放大倍數</param>
+            <param name="strData">列印內容</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.BFL(System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            設定條碼欄位
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="barcodeDensity">條碼密度(Narrow/Wide) 0~8,若設為0則根據BDN手動設定</param>
+            <param name="barcodeNumber">請參加對照表</param>
+            <param name="barcodeHeight">條碼高度,若為mm單位0.1~99.9mm,若為dot單位8~1200 dot</param>
+            <param name="strData">列印內容</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.SCF(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            設定可格式化文字欄位
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="fontNumber">字型代碼</param>
+            <param name="scaleRatioX">X軸比率</param>
+            <param name="scaleRatioY">Y軸比率</param>
+            <param name="calculation">遞增或遞減("+" or "-")</param>
+            <param name="value">增減數值 1~999</param>
+            <param name="strData">列印格式,請參考說明</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.SBF(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            設定可格式化條碼欄位
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="barcodeDensity">條碼密度,同BFL設定</param>
+            <param name="barcodeNumber">條碼代碼</param>
+            <param name="barcodeHeight">條碼高度</param>
+            <param name="calculation">遞增或遞減("+" or "-")</param>
+            <param name="value">增減數值 1~999</param>
+            <param name="strData">列印格式,請參考說明</param>
+        </member>
+        <member name="T:RegalPrinter.Ring.LineType">
+            <summary>
+            畫線用列舉
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.LIN(System.String,System.String,System.String,System.String,RegalPrinter.Ring.LineType,System.Int32)">
+            <summary>
+            晝線條
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="endX">X軸終點</param>
+            <param name="endY">Y軸終點</param>
+            <param name="lineType">線條型態</param>
+            <param name="lineWidth">線條寬度 1~15</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.BOX(System.String,System.String,System.String,System.String,RegalPrinter.Ring.LineType,System.Int32,System.Int32)">
+            <summary>
+            晝方塊
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="endX">X軸結束點</param>
+            <param name="endY">Y軸結束點</param>
+            <param name="lineType">線條型態</param>
+            <param name="lineWidth">線條寬度 1~15</param>
+            <param name="paintOut">Paint Out: 0 or 1</param>
+        </member>
+        <member name="T:RegalPrinter.Ring.CircleType">
+            <summary>
+            畫圓用列舉
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.CIR(System.String,System.String,System.String,RegalPrinter.Ring.CircleType,System.Int32)">
+            <summary>
+            晝圓
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="radius">圓半徑</param>
+            <param name="lineType">線條型態</param>
+            <param name="fillMode">圓填入內容 fill in or fill out : 1 or 2</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.ECR(System.String,System.String,System.Int32,System.Int32,System.Int32,RegalPrinter.Ring.CircleType,System.Int32)">
+            <summary>
+            畫橢圓
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="radiusY_of_Oval">橢圓Y半徑(只能以mm為單位)</param>
+            <param name="radiusFactoryX">橢圓x半徑 1~65535</param>
+            <param name="radiusFactoryY">橢圓y半徑 1~65535</param>
+            <param name="lineType">線條型態</param>
+            <param name="fillMode">橢圓填入內容 fill in or fill out : 1 or 2</param>
+        </member>
+        <member name="T:RegalPrinter.Ring.ARCType">
+            <summary>
+            畫扇形用列舉
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.SEC(System.String,System.String,System.String,System.String,System.String,System.String,System.String,RegalPrinter.Ring.ARCType)">
+            <summary>
+            畫扇形
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="radius">圓半徑</param>
+            <param name="arcStartX">扇形X起點</param>
+            <param name="arcStartY">扇形Y起點</param>
+            <param name="arcEndX">扇形X終點</param>
+            <param name="arcEndY">扇形Y終點</param>
+            <param name="arcType">線條型態</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.SEG(System.String,System.String,System.String,System.String,System.String,System.String,System.String,RegalPrinter.Ring.ARCType)">
+            <summary>
+            畫弧形
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="radius">圓半徑</param>
+            <param name="arcStartX">扇形X起點</param>
+            <param name="arcStartY">扇形Y起點</param>
+            <param name="arcEndX">扇形X終點</param>
+            <param name="arcEndY">扇形Y終點</param>
+            <param name="arcType">線條型態</param>
+        </member>
+        <member name="T:RegalPrinter.Ring.FillInType">
+            <summary>
+            Fills in a specified closed field's Enum
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.PNT(System.String,System.String,RegalPrinter.Ring.FillInType)">
+            <summary>
+            Fills in a specified closed field
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="Patten">Fill in Type</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.EFT(System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            註冊外部字元資料
+            </summary>
+            <param name="registerNo">註冊代碼</param>
+            <param name="number_of_register">註冊幾個字元</param>
+            <param name="bData">字元資料</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.EPC(System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            註冊ASCII字元組成的外部字元資料
+            </summary>
+            <param name="registerNo">註冊代碼</param>
+            <param name="number_of_register">註冊幾個字元</param>
+            <param name="bData">字元資料</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.BIM(System.String,System.String,System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            設定Bit Image欄位
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="sizeOfWidth">Specifies 8 bit binary data as 1 byte data</param>
+            <param name="sizeOfLength">Line number</param>
+            <param name="bData">image data</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.BTG(System.String,System.String,System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            設定Bit Image欄位使用ASCII字元表示
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="sizeOfWidth">Total amount of data transfer doubles (as the number of bytes ) comparedwith that of binary form by changing one bite of bitmapped data expression into two digits of ASCII character one</param>
+            <param name="sizeOfLength">Line number</param>
+            <param name="bData">image data</param>
+        </member>
+        <member name="T:RegalPrinter.Ring.Terminator">
+            <summary>
+            終端字元
+            </summary>
+        </member>
+        <member name="M:RegalPrinter.Ring.VCS(System.String,System.String,System.Int32,System.Int32,System.Int32,RegalPrinter.Ring.Terminator,System.String)">
+            <summary>
+            設定列印Vericode
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="matrixSize">指定每行有多少data cell (10~48)</param>
+            <param name="cellSize">指定一個cell多少dot大小 (1~15 dot)</param>
+            <param name="errLevel">錯誤更正等級 (1~2) </param>
+            <param name="terminator">選擇結束字元</param>
+            <param name="strData">列印資料</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.VCB(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            設定列印固定資料長度的Vericode
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="matrixSize">指定每行有多少data cell (10~48)</param>
+            <param name="cellSize">指定一個cell多少dot大小 (1~15 dot)</param>
+            <param name="errLevel">錯誤更正等級 (1~2) </param>
+            <param name="numberCharacters">多少字元要列印</param>
+            <param name="strData">列印資料</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.PDF417(System.String,System.String,System.Int32,System.Int32,RegalPrinter.Ring.Terminator,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            設定列印PDF417欄位
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="horizontalDensity">水平密度 2~64</param>
+            <param name="verticalDensity">垂直密度 2~64</param>
+            <param name="terminator">終端字元</param>
+            <param name="securityLevel">安全等級 0~8 Default:1</param>
+            <param name="number_of_digits_for_printing">欲列印多少字元 1~30</param>
+            <param name="number_of_lines_for_printing">每行多少字元 3~90</param>
+            <param name="strData">列印資料</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.TPD(System.String,System.String,System.Int32,System.Int32,RegalPrinter.Ring.Terminator,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            設定列印簡易PDF417欄位
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="horizontalDensity">水平密度 2~64</param>
+            <param name="verticalDensity">垂直密度 2~64</param>
+            <param name="terminator">終端字元</param>
+            <param name="securityLevel">安全等級 0~8 Default:1</param>
+            <param name="number_of_digits_for_printing">欲列印多少字元 1~30</param>
+            <param name="number_of_lines_for_printing">每行多少字元 3~90</param>
+            <param name="strData">列印資料</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.QRC(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,RegalPrinter.Ring.Terminator,System.Int32,System.String)">
+            <summary>
+            設定列印QRCode或Micro QR
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="cellSize">cell size (1~255 dot)</param>
+            <param name="inoutMode">1. Judge automatically,2. Select the character mode( character code in selected area) Please select No.2 in case of Micro QR.Please refer “Explanation of the function” on next page in case of using the character mode with No. 2.</param>
+            <param name="maskNumber">Mask Number:0~7 8:With out Mask,9:Automatic setting ( Recommended)</param>
+            <param name="errorLevel">1 : Level L (About 7% restoration ),2 : Level M (About 15% restoration),3 : Level Q (About 25% restoration),4 : Level H ( About 30% restoration), Micro QR: 1~3 default:1</param>
+            <param name="terminator">終端字元</param>
+            <param name="modelNumber">QRCode Model Number,1:Model1,2:Model2,3:Micro QR</param>
+            <param name="strData">列印資料</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.DMX(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,RegalPrinter.Ring.Terminator,System.String)">
+            <summary>
+            設定列印DataMatrix
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="matrixRow">0或8~80 (dot)</param>
+            <param name="matrixLineageNumber">0或8~80 (dot)</param>
+            <param name="dotPerModuleSize">1~64(dot) 建議最小3 dot</param>
+            <param name="errorLevel">1 : ECC000,2 : ECC050,3 : ECC080,4 : ECC100,5 : ECC140,6 : ECC200 (Recommended)</param>
+            <param name="charEncodeSchema">指定字元Encode Schema 1~6</param>
+            <param name="terminator">終端字元</param>
+            <param name="strData">列印資料</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.AFL(System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            設定列印Carra Code
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="number_of_digits">1~99</param>
+            <param name="number_of_rows">1~99</param>
+            <param name="columnSize">1~99mm or 1~999 dot</param>
+            <param name="rectangle_of_column">1~99mm or 1~999dot</param>
+            <param name="rectangle_of_alignment">1~99mm or 1~999dot</param>
+            <param name="alignmentMargin">1~99mm or 1~999dot</param>
+            <param name="strData">列印資料</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.TFL(System.String,System.String,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            列印目前日期時間
+            </summary>
+            <param name="startX">X軸起點</param>
+            <param name="startY">Y軸起點</param>
+            <param name="fontNumber">字形代碼</param>
+            <param name="scaleX">Specifies scale-up ratio of X coordinate</param>
+            <param name="scaleY">Specifies scale-up ratio of Y coordinate</param>
+            <param name="strData">列印格式,請參照說明</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.SET(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            設定時間
+            </summary>
+            <param name="dayOfWeek">day of week (0:sunday,1:Monday....)</param>
+            <param name="day">01~31</param>
+            <param name="month">01~12</param>
+            <param name="low_order_two_digits">00~99</param>
+            <param name="hour24">00~23</param>
+            <param name="minutes">00~59</param>
+            <param name="leap_year">0 : This year is a leap year,1 : after a year,2: after two years,3: after three years</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.MOD(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            調整印表機列印速度,模式,方法
+            </summary>
+            <param name="printSpeed">1~10 參考說明</param>
+            <param name="printMode">1~5 參考說明</param>
+            <param name="printMethod">1~2 參考說明</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.SPD(System.Int32)">
+            <summary>
+            設定印表機速度
+            </summary>
+            <param name="printSpeed">1~4 參考說明</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.MDU(System.Int32,System.Int32)">
+            <summary>
+            設定紙張型態跟是否將Label skip
+            </summary>
+            <param name="paperType">1: Label paper (default).,2: Continuous paper.</param>
+            <param name="labelSkip">1: Skips a label (default) .2: No label skip.</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.ELM(System.Int32)">
+            <summary>
+            Specifies the presence or absence of element check.
+            </summary>
+            <param name="check">1: With an element check (default),2: No element check</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.LEN(System.Int32,System.String,System.String)">
+            <summary>
+            Specifies condition of label calibration and settings of label and gap length at PGM mode.
+            </summary>
+            <param name="length_measurement_condition">1: Calibrates label every time (default),2: Calibrates label at first time.,3: PGM (Specifies label length)</param>
+            <param name="labelLength">7.0~999(mm) or 0070 to 9999.9(unit x 0.1mm)</param>
+            <param name="gapLength">2.0~999.9(mm) or 0070 to 9999.9(unit x 0.1mm)</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.KNJ(System.Int32)">
+            <summary>
+            Specifies a Kanji (Japanese ) character code
+            </summary>
+            <param name="charCode">1: Shift JIS (default),2: JIS</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.RES(System.Int32)">
+            <summary>
+            重置印表機
+            </summary>
+            <param name="status">1: The printer does not send a status when it is reset.,2: The printer send a status out when it is reset.</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.ADJ(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            設定印表機參數
+            </summary>
+            <param name="density">列印密度 -15~+15</param>
+            <param name="prtPosition">列印位置 -30~+30</param>
+            <param name="cutPosition">切刀位置 -30~+30</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.BFK(System.Int32)">
+            <summary>
+            清除印表機內部Buffer
+            </summary>
+            <param name="mode">1~2</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.CAN(System.Int32)">
+            <summary>
+            印表機回拉命令
+            </summary>
+            <param name="mode">1~2</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.PrinterWorkOffline(System.String)">
+            <summary>
+            以WMI方式查詢印表機是否Online
+            </summary>
+            <param name="strPrinterName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.SendTo(System.IntPtr,System.Int32)">
+            <summary>
+            送出命令給印表機
+            </summary>
+            <param name="pBytes">byte array</param>
+            <returns>return 0為失敗</returns>
+        </member>
+        <member name="M:RegalPrinter.Ring.ISV(System.String)">
+            <summary>
+            Registering picture file (Host  FLASH ROM)
+            </summary>
+            <param name="imgName">BitMap File Name and path</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.IDE(System.String)">
+            <summary>
+            Deleting picture file
+            </summary>
+            <param name="imgName">picture file name</param>
+        </member>
+        <member name="M:RegalPrinter.Ring.ILD(System.String,System.String,System.String)">
+            <summary>
+            Printing picture file
+            </summary>
+            <param name="x">x position</param>
+            <param name="y">y position</param>
+            <param name="picName">picture name</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,6 @@
+1.部品照合的商品條碼改成部品名稱.
+  對應:將Inspection.ini的WORKNO的名稱填入商品品條碼
+
+2.部品照合掃描追加掃描音效
+  對應:追加音效WAV檔案button01a.wav
+  路徑:C:\AC-BarCode\sound

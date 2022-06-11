@@ -1,0 +1,5 @@
+C:\AC-BarCode\Programer\ReadRingini.vi (ReadRingini.vi)
+    - The control expected to be at "C:\AC-BarCode\Programer\Control\PRT.ctl" was loaded from "C:\AC-BarCode\controls\PRT.ctl".
+    - The control expected to be at "C:\AC-BarCode\Programer\Control\QRC.ctl" was loaded from "C:\AC-BarCode\controls\QRC.ctl".
+    - The control expected to be at "C:\AC-BarCode\Programer\Control\GetBIM.ctl" was loaded from "C:\AC-BarCode\controls\GetBIM.ctl".
+    - The control expected to be at "C:\AC-BarCode\Programer\Control\FMT.ctl" was loaded from "C:\AC-BarCode\controls\FMT.ctl".
